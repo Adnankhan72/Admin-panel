@@ -1,0 +1,197 @@
+/* Table styling */
+body[set-theme='light'] {
+    --bg-color: #A7D73F;
+    --text-color: #000;
+    --input-bg-color: #f0f0f0;
+    --button-bg-color: #131E22;
+    --button-text-color: #fff;
+    --color: black;
+}
+
+/* Dark mode */
+body[set-theme='dark'] {
+    --bg-color: #131E22;
+    --text-color: #A7D73F;
+    --input-bg-color: #2c2c2c;
+    --button-bg-color: #A7D73F;
+    --button-text-color: black;
+    --color: #fff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 12px 15px;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+}
+
+.employee-table tr:hover {
+    background-color: white;
+}
+
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+/* Action icons */
+.icon {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.edit-icon {
+    color: var(--button-bg-color);
+}
+
+.delete-icon {
+    color: var(--button-bg-color);
+}
+
+
+/* Pagination container */
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.page-info {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+/* Pagination buttons */
+.pagination-buttons {
+    display: flex;
+}
+
+.pagination-button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #A7D73F;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-button:hover {
+    background-color: var(--button-bg-color);
+}
+
+.pagination-button.active {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-weight: bold;
+}
+
+.pagination-button:disabled {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    cursor: not-allowed;
+}
+
+/* Link styling */
+.employee-link {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.employee-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+/* For smaller screens (tablets and mobile) */
+@media (max-width: 768px) {
+    /* Make the table scrollable on small screens */
+    .employee-table {
+        font-size: 14px;
+        border: 0;
+        width: 100%;
+        overflow-x: auto; /* Horizontal scroll for small screens */
+        display: block;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--text-color);
+    }
+
+    .employee-table tr:hover {
+        background-color: var(--bg-color);
+    }
+
+    /* Make action icons smaller */
+    .icon {
+        font-size: 16px;
+    }
+
+    /* Stack pagination buttons vertically on small screens */
+    .pagination-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pagination-buttons {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .pagination-button {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 12px;
+    }
+}
+
+/* For very small screens (mobile devices) */
+@media (max-width: 480px) {
+    /* Further reduce table font size */
+    .employee-table {
+        font-size: 12px;
+        overflow-x: auto; /* Horizontal scroll for small screens */
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 8px 10px;
+    }
+
+    .pagination-button {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .pagination-container {
+        margin: 10px 0;
+    }
+
+    /* Make action icons even smaller */
+    .icon {
+        font-size: 14px;
+    }
+}

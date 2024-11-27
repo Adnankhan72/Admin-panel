@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+}
+.title{
+    color: #fff;
+}
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+.banner .content .title {
+    font-family: 'Hallowed Grounds';
+    font-size: 9em;
+}
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+
+    mask-image: url(../images/ink_lv2.gif);
+    mask-size: cover;
+    mask-position: center;
+}
+.btn {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+    border-radius: 15px ;
+  }
+  
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    
+    cursor: pointer;
+    background-color: #A7D73F;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #A7D73F; /* Darker green */
+    transform: scale(1.1);
+    color: #000;
+     /* Slightly enlarge the button */
+  }
+  button a:hover{
+    color: #000;
+
+  }
+  
+  button:active {
+    transform: scale(0.98); /* Slightly shrink the button when clicked */
+  }
+  
+  button a {
+    color: #000; /* Ensure the link inside the button is white */
+    text-decoration: none; /* Remove underline */
+    display: inline-block;
+    width: 100%;
+ 
+    height: 100%;
+    text-align: center;
+  }
