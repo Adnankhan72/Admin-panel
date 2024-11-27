@@ -2,11 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DeleteEmployeeById } from '../api';
 import { notify } from '../utils';
-import './EmployerTable.css'
+import './EmployerTable.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmployee }) {
+function EmployeeTable({
+    employees = [], // Default to an empty array to handle missing employees prop
+    pagination = { currentPage: 1, totalPages: 1 }, // Default pagination values
+    fetchEmployees,
+    handleUpdateEmployee,
+}) {
     const headers = ['Name', 'Email', 'Phone', 'Department', 'Actions'];
     const { currentPage, totalPages } = pagination;
 
@@ -22,8 +27,8 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
         }
     };
 
-    const handlePagination = (currentPage) => {
-        fetchEmployees('', currentPage, 5);
+    const handlePagination = (page) => {
+        fetchEmployees('', page, 5); // Adjust as needed based on backend API requirements
     };
 
     const handleDeleteEmployee = async (id) => {
@@ -57,15 +62,14 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
                     title="Edit"
                     onClick={() => handleUpdateEmployee(employee)}
                 >
-                    <EditIcon/>
+                    <EditIcon />
                 </span>
                 <span
                     className="icon delete-icon"
                     title="Delete"
                     onClick={() => handleDeleteEmployee(employee._id)}
                 >
-                    <DeleteIcon/>
-                  
+                    <DeleteIcon />
                 </span>
             </td>
         </tr>
@@ -86,7 +90,9 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
                 <tbody>
                     {employees.length === 0 ? (
                         <tr>
-                            <td colSpan={headers.length} className="no-data">No Data Found</td>
+                            <td colSpan={headers.length} className="no-data">
+                                No Data Found
+                            </td>
                         </tr>
                     ) : (
                         employees.map((emp) => <TableRow employee={emp} key={emp._id} />)
@@ -124,7 +130,6 @@ function EmployeeTable({ employees, pagination, fetchEmployees, handleUpdateEmpl
                     </button>
                 </div>
             </div>
-            
         </>
     );
 }
