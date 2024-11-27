@@ -6,11 +6,14 @@ const cors = require('cors');
 const EmployeeRoutes = require('./Routes/EmployeeRoutes');
 const PORT = 8080;
 
+
 require('./Models/db');
 app.use(cors());
 
 app.use(bodyParser.json());
-
+app.get("/", (req, res) => {
+    res.send("admin is working");
+  });
 app.use('/api/employees', EmployeeRoutes);
 const roleRoutes = require('./Routes/Roleroutes');
 app.use('/api/roles', roleRoutes);
