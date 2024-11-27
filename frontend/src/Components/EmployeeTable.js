@@ -15,6 +15,7 @@ function EmployeeTable({
     const headers = ['Name', 'Email', 'Phone', 'Department', 'Actions'];
     const { currentPage, totalPages } = pagination;
 
+    // Handles pagination logic
     const handleNextPage = () => {
         if (currentPage < totalPages) {
             handlePagination(currentPage + 1);
@@ -31,21 +32,23 @@ function EmployeeTable({
         fetchEmployees('', page, 5); // Adjust as needed based on backend API requirements
     };
 
+    // Delete Employee functionality
     const handleDeleteEmployee = async (id) => {
         try {
             const { success, message } = await DeleteEmployeeById(id);
             if (success) {
                 notify(message, 'success');
+                fetchEmployees(); // Refresh the employee list
             } else {
                 notify(message, 'error');
             }
-            fetchEmployees();
         } catch (err) {
             console.error(err);
             notify('Failed to delete Employee', 'error');
         }
     };
 
+    // Renders individual table row
     const TableRow = ({ employee }) => (
         <tr>
             <td>
@@ -75,6 +78,7 @@ function EmployeeTable({
         </tr>
     );
 
+    // Generate page numbers dynamically
     const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
     return (
